@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -48,6 +49,11 @@ func main() {
 	multiple := *argMultiple
 	suffix := ""
 
+	if len(names) == 0 {
+		fmt.Println("Must have aleast one operant")
+		os.Exit(1)
+	}
+
 	if len(*argSuffix) != 0 {
 		multiple = true
 		suffix = *argSuffix
@@ -70,5 +76,8 @@ func main() {
 	}
 
 	res := sb.String()
-	fmt.Println(res[:len(res)-1])
+	if sep == "\n" {
+		res = res[:len(res)-1] // remove the trailing newline
+	}
+	fmt.Println(res)
 }
