@@ -9,12 +9,9 @@ const (
 	DEFAULT = "yes"
 	USAGE   = `yes - print a string until interupted
 
-SYNOPSIS
 yes [rep]
 
-DESCRIPTION
-Repeatedly print 'rep' or '%s' by default
-`
+Repeatedly print *rep* or '%s' by default `
 )
 
 func main() {

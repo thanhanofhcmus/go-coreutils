@@ -6,5 +6,6 @@ use (
 	./pwd
 	./test
 	./true
+	./uname
 	./yes
 )
