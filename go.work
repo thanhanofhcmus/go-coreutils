@@ -2,9 +2,9 @@ go 1.18
 
 use (
 	./arch
+	./basename
 	./false
 	./pwd
-	./test
 	./true
 	./uname
 	./yes
