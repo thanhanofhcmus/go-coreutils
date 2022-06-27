@@ -5,4 +5,5 @@ use (
 	./false
 	./test
 	./true
+	./yes
 )
