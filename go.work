@@ -3,6 +3,7 @@ go 1.18
 use (
 	./arch
 	./false
+	./pwd
 	./test
 	./true
 	./yes
