@@ -9,9 +9,11 @@ const (
 	DEFAULT = "yes"
 	USAGE   = `yes - print a string until interupted
 
-yes [rep]
+FORM(S)
+yes [REP]
 
-Repeatedly print *rep* or '%s' by default `
+Repeatedly print REP or '%s' by default
+`
 )
 
 func main() {

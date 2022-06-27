@@ -9,6 +9,16 @@ import (
 	"golang.org/x/sys/unix"
 )
 
+const USAGE = `uname - print sytem infomation
+
+FORM(S)
+uname [OPTION...]
+
+if no OPTION, same as -s
+
+OPTION(S)
+`
+
 func clen(b []byte) int {
 	for i, v := range b {
 		if v == 0 {
@@ -24,12 +34,12 @@ func cString(b []byte) string {
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "uname - print system infomation\n")
+		fmt.Fprintf(flag.CommandLine.Output(), USAGE)
 		flag.PrintDefaults()
 	}
 
 	argOsName := flag.Bool("s", false, "Print the operating system name")
-	argAll := flag.Bool("a", false, "Print all infomation (as if running with mnrsv)")
+	argAll := flag.Bool("a", false, "Print all infomation (as if running with mnrsv), nullify other options")
 	argOsRelease := flag.Bool("r", false, "Print the operating system release")
 	argOsVersion := flag.Bool("v", false, "Print the operating system version")
 	argNodeName := flag.Bool("n", false, "Print the network nodename")

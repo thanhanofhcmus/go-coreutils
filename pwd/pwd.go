@@ -7,13 +7,22 @@ import (
 	"os"
 )
 
+const USAGE = `pwd - print current working directory
+
+FORM(S)
+pwd [OPTION]
+
+if no OPTION, same as -L
+
+OPTION(S)
+`
+
+
 func main() {
 	_ = flag.Bool("L", false, "Print logical path")
 	physical := flag.Bool("P", false, "Print physical path")
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), `pwd - print current working directory
-if there are no arguments given print logical path
-`)
+		fmt.Fprintf(flag.CommandLine.Output(), USAGE)
 		flag.PrintDefaults()
 	}
 	flag.Parse()

@@ -10,11 +10,11 @@ const (
 	SEPERATOR = '/'
 	USAGE     = `basename - strip directory and suffix from a file name
 
-FORMS
+FORM(S)
 basename NAME [SUFFIX]
-basename [OPTIONS...] NAME...
+basename [OPTION...] NAME...
 
-OPTIONS
+OPTION(S)
 `
 )
 
@@ -40,7 +40,7 @@ func main() {
 		flag.PrintDefaults()
 	}
 	argMultiple := flag.Bool("a", false, "Support multiple input as NAME")
-	argSuffix := flag.String("s", "", "Take suffix as an argument, implies -a")
+	argSuffix := flag.String("s", "", "Take SUFFIX as an argument, implies -a")
 	argZero := flag.Bool("z", false, "End each output line with a NULL instead of a newline")
 	flag.Parse()
 
