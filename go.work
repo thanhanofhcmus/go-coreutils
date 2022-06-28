@@ -8,6 +8,7 @@ use (
 	./echo
 	./false
 	./pwd
+	./touch
 	./true
 	./uname
 	./wc
