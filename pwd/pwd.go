@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"path/filepath"
 	"os"
+	"path/filepath"
 )
 
 const USAGE = `pwd - print current working directory
@@ -16,7 +16,6 @@ if no OPTION, same as -L
 
 OPTION(S)
 `
-
 
 func main() {
 	_ = flag.Bool("L", false, "Print logical path")
@@ -32,7 +31,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	pwd, err := os.Getwd();
+	pwd, err := os.Getwd()
 	if err != nil {
 		os.Exit(1)
 	}
@@ -46,5 +45,5 @@ func main() {
 	}
 
 	fmt.Println(pwd)
-	
+
 }

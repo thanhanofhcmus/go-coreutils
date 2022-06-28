@@ -62,9 +62,9 @@ func main() {
 
 	res := sb.String()
 	if sep == "\n" {
-		res = res[:len(res)-1]  // remove trailing newline
+		res = res[:len(res)-1] // remove trailing newline
 	}
-	
+
 	fmt.Println(res)
 
 }

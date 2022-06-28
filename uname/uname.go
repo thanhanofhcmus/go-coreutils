@@ -97,7 +97,7 @@ func main() {
 	if len(line) == 0 {
 		line = osName
 	} else {
-		line = line[:len(line) - 1] // remove trailing whitespace
+		line = line[:len(line)-1] // remove trailing whitespace
 	}
 
 	fmt.Println(line)

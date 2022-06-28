@@ -12,6 +12,6 @@ func main() {
 		flag.PrintDefaults()
 	}
 	flag.Parse()
-	
+
 	os.Exit(1)
 }
