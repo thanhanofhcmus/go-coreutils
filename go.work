@@ -5,6 +5,7 @@ use (
 	./basename
 	./cat
 	./dirname
+	./echo
 	./false
 	./pwd
 	./true

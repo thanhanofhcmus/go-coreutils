@@ -1,0 +1,118 @@
+package main
+
+import (
+	"flag"
+	"fmt"
+	"os"
+	"strings"
+)
+
+const (
+	USAGE = `echo - write argument to the output
+
+FORM(S)
+echo [OPTION...] [STRING...]
+
+OPTION(S)
+`
+	ESCAPES = `
+If -e is in effect, the following escape is recognized:
+
+	\\ backslash
+
+	\a alert (BEL)
+
+	\b backspace
+
+	\c procedure no futher input
+
+	\e escape
+
+	\f form feed
+
+	\n line feed
+
+	\r carriage return
+
+	\t horizontal tab
+
+	\v vertical tab
+
+	\xHH byte with hexadecimal value of HH (1 or 2 digits)
+
+	\0NNN byte with octal value of NNN (1 to 3 digits)
+`
+)
+
+func isOctalByte(r byte) bool {
+	return '0' <= r && r <='7'
+}
+
+func isHexaByte(r byte) bool {
+	return ('0' <= r && r <= '9') || ('a' <= r && r <= 'f') || ('A' <= r && r <= 'F')
+}
+
+func main() {
+	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(), USAGE)
+		flag.PrintDefaults()
+		fmt.Fprintf(flag.CommandLine.Output(), ESCAPES)
+	}
+	argNoNewline := flag.Bool("n", false, "Do not end the output line with a newline")
+	argEscape := flag.Bool("e", false, "Enable backslash escape, overrides -E")
+	_ = flag.Bool("E", false, "Disable backslash escape (default)")
+	flag.Parse()
+
+	concated := strings.Join(flag.Args(), " ")
+
+	if *argEscape {
+		idx := 0
+		for idx < len(concated) {
+			func () {
+				defer func() { idx++ }()
+			}()
+			c := concated[idx]
+			if c == '\\' && idx != len(concated)-1 {
+				idx++
+				switch concated[idx] {
+				case '\\':
+					c = '\\'
+				case 'a':
+					c = '\a'
+				case 'b':
+					c = '\b'
+				case 'c':
+					os.Exit(0)
+				case 'e':
+					c = '\x1B'
+				case 'f':
+					c = '\f'
+				case 'n':
+					c = '\n'
+				case 'r':
+					c = '\r'
+				case 't':
+					c = '\t'
+				case 'v':
+					c = '\v'
+				case 'x':
+					c = 0
+					if idx < len(concated)-1 && isHexaByte(concated[idx+1]){
+						c = hexToBin()
+					}
+				case '0':
+					fmt.Println("unimplemented")
+					os.Exit(1)
+				}
+			}
+			os.Stdout.Write([]byte{c})
+			idx++
+		}
+	} else {
+		fmt.Print(concated)
+	}
+
+	if !*argNoNewline {
+		fmt.Println()
+	}
+}
