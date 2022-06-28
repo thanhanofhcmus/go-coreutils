@@ -7,9 +7,9 @@ use (
 	./dirname
 	./echo
 	./false
-	./printf
 	./pwd
 	./true
 	./uname
+	./wc
 	./yes
 )
