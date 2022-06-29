@@ -8,6 +8,7 @@ use (
 	./echo
 	./factor
 	./false
+	./head
 	./mkdir
 	./pwd
 	./rmdir
