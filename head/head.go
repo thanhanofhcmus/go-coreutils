@@ -14,9 +14,13 @@ const (
 	USAGE = `head - output the first part of files
 
 FORM(S)
-head [-n NUMBER | -c NUMBER]  FILE...
+head [-n NUMBER | -c NUMBER]  [FILE...]
 
-if no OPTION, same as -n %d
+if there are no OPTIONS, same as -n %d
+
+if there are no FILES, read from STDIN
+
+if there are more than one FILES, each file will have a header in a form of ==> FILE <==
 
 OPTION(S)
 `
@@ -75,9 +79,8 @@ func main() {
 	files = flag.Args()
 
 	if len(files) == 0 {
-		// passing number != -1 as the second argument
-		// so the program does not print extra endline
-		// after the program end
+		// passing number != -1 as the second argument so the program
+		// does not print extra endline after it ends
 		head(os.Stdin, 0)
 	} else {
 		for i := 0; i < len(files); i++ {

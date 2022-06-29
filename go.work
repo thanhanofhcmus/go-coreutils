@@ -10,6 +10,7 @@ use (
 	./false
 	./head
 	./mkdir
+	./printenv
 	./pwd
 	./rmdir
 	./touch
