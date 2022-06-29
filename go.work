@@ -10,6 +10,7 @@ use (
 	./false
 	./mkdir
 	./pwd
+	./rmdir
 	./touch
 	./true
 	./uname
