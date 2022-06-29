@@ -19,5 +19,6 @@ use (
 	./true
 	./uname
 	./wc
+	./whoami
 	./yes
 )
