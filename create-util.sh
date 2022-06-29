@@ -1,6 +1,9 @@
 #!/bin/sh
 
-echo $1
+if [ -d $1 ]; then
+	echo "$1 already exists"
+	exit 1
+fi
 
 mkdir $1
 cd $1
@@ -10,6 +13,7 @@ echo "package main
 import (
 	\"flag\"
 	\"fmt\"
+	\"os\"
 )
 
 const (
@@ -22,6 +26,12 @@ func main() {
 		flag.PrintDefaults()
 	}
 	flag.Parse()
+
+	args := flag.Args()
+	if len(args) == 0 {
+		fmt.Println(\"Must have aleast one operant\")
+		os.Exit(1)
+	}
 }
 " >> "$1.go"
 cd ..

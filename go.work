@@ -8,6 +8,7 @@ use (
 	./echo
 	./factor
 	./false
+	./mkdir
 	./pwd
 	./touch
 	./true
