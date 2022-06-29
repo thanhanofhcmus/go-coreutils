@@ -6,6 +6,7 @@ use (
 	./cat
 	./dirname
 	./echo
+	./factor
 	./false
 	./pwd
 	./touch
