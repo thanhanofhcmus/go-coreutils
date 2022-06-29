@@ -17,7 +17,13 @@ import (
 )
 
 const (
-	USAGE = \`$1 - \`
+	USAGE = \`$1 - 
+
+FORM(S)
+$1
+
+OPTION(S)
+\`
 )
 
 func main() {
