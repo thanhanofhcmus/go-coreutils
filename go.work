@@ -10,6 +10,7 @@ use (
 	./false
 	./head
 	./link
+	./ln
 	./mkdir
 	./printenv
 	./pwd
