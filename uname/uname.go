@@ -9,7 +9,7 @@ import (
 	"golang.org/x/sys/unix"
 )
 
-const USAGE = `uname - print sytem infomation
+const USAGE = `uname - print system information
 
 FORM(S)
 uname [OPTION...]
@@ -39,7 +39,7 @@ func main() {
 	}
 
 	argOsName := flag.Bool("s", false, "Print the operating system name")
-	argAll := flag.Bool("a", false, "Print all infomation (as if running with mnrsv), nullify other options")
+	argAll := flag.Bool("a", false, "Print all information (as if running with mnrsv), nullify other options")
 	argOsRelease := flag.Bool("r", false, "Print the operating system release")
 	argOsVersion := flag.Bool("v", false, "Print the operating system version")
 	argNodeName := flag.Bool("n", false, "Print the network nodename")

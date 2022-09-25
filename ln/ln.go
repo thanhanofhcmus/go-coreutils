@@ -20,7 +20,7 @@ OPTION(S)
 )
 
 var (
-	linkFunc func(oldname, newname string) error
+	linkFunc func(oldName, newName string) error
 )
 
 func reportError(err error) {
@@ -43,7 +43,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) < 2 {
-		fmt.Println("Must have aleast two operant")
+		fmt.Println("Must have at least two parameter")
 		os.Exit(1)
 	}
 

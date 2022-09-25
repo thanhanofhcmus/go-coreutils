@@ -8,8 +8,8 @@ import (
 )
 
 const (
-	SEPERATOR = '/'
-	USAGE     = `dirname - strip last componment of a file
+	SEPARATOR = '/'
+	USAGE     = `dirname - strip last component of a file
 
 FORM(S)
 dirname [OPTION...] NAME...
@@ -28,7 +28,7 @@ func getTokenPositionReverse(s string, suffix rune) int {
 }
 
 func stripLast(s string) string {
-	if pos := getTokenPositionReverse(s, SEPERATOR); pos >= 0 {
+	if pos := getTokenPositionReverse(s, SEPARATOR); pos >= 0 {
 		return s[:pos]
 	}
 	return s
@@ -45,7 +45,7 @@ func main() {
 	names := flag.Args()
 
 	if len(names) == 0 {
-		fmt.Println("must have aleast one operant")
+		fmt.Println("must have at least one parameter")
 		os.Exit(1)
 	}
 

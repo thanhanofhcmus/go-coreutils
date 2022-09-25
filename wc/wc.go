@@ -48,10 +48,10 @@ func newStatFromFile(f *os.File) stat {
 
 var (
 	totalStat stat
-	argBytes  *bool = flag.Bool("c", false, "Print the byte counts")
-	argLines  *bool = flag.Bool("l", false, "Print the line counts")
-	argWords  *bool = flag.Bool("w", false, "Print the word counts")
-	argChars  *bool = flag.Bool("m", false, "Print the character counts")
+	argBytes  = flag.Bool("c", false, "Print the byte counts")
+	argLines  = flag.Bool("l", false, "Print the line counts")
+	argWords  = flag.Bool("w", false, "Print the word counts")
+	argChars  = flag.Bool("m", false, "Print the character counts")
 )
 
 func addToTotal(s stat) {
@@ -96,7 +96,7 @@ func main() {
 
 	files := flag.Args()
 	if len(files) == 0 {
-		fmt.Println("Must have aleast one operant")
+		fmt.Println("Must have at least one parameter")
 	}
 	counter := 0 // to check how many file checked
 

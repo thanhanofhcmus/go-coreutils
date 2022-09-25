@@ -3,12 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 	"strings"
 )
 
 const (
-	SEPERATOR = '/'
+	SEPARATOR = '/'
 	USAGE     = `basename - strip directory and suffix from a file name
 
 FORM(S)
@@ -29,7 +30,7 @@ func getTokenPositionReverse(s string, suffix rune) int {
 }
 
 func stripBase(s string) string {
-	if pos := getTokenPositionReverse(s, SEPERATOR); pos >= 0 {
+	if pos := getTokenPositionReverse(s, SEPARATOR); pos >= 0 {
 		return s[pos+1:]
 	}
 	return s
@@ -37,7 +38,9 @@ func stripBase(s string) string {
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), USAGE)
+		if _, err := fmt.Fprintf(flag.CommandLine.Output(), USAGE); err != nil {
+			log.Fatal(err)
+		}
 		flag.PrintDefaults()
 	}
 	argMultiple := flag.Bool("a", false, "Support multiple input as NAME")
@@ -50,7 +53,7 @@ func main() {
 	suffix := ""
 
 	if len(names) == 0 {
-		fmt.Println("Must have aleast one operant")
+		fmt.Println("Must have at least one parameter")
 		os.Exit(1)
 	}
 

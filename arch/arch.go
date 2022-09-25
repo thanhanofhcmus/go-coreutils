@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"log"
 	"os"
 
 	"golang.org/x/sys/unix"
@@ -23,7 +24,9 @@ func cString(b []byte) string {
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), "arch - print machine hardware name (same as uname -m)\n")
+		if _, err := fmt.Fprintf(flag.CommandLine.Output(), "arch - print machine hardware name (same as uname -m)\n"); err != nil {
+			log.Fatal(err)
+		}
 		flag.PrintDefaults()
 	}
 	flag.Parse()

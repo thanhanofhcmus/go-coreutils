@@ -25,7 +25,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) != 2 {
-		fmt.Println("Must have exactly two operants")
+		fmt.Println("Must have exactly two parameters")
 		os.Exit(1)
 	}
 

@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	USAGE = `printenv - print all ore same enviroment variables
+	USAGE = `printenv - print all ore same environment variables
 
 FORM(S)
 printenv [NAME]

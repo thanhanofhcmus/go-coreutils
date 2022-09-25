@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	DEFAUTL_COUNT int = 10
+	DefaultCount int = 10
 
 	USAGE = `head - output the first part of files
 
@@ -29,9 +29,9 @@ OPTION(S)
 var (
 	files []string
 
-	optBytes      *int = flag.Int("c", DEFAUTL_COUNT, "Print the first NUMBER bytes of each file, suppress -n")
-	optLines      *int = flag.Int("n", DEFAUTL_COUNT, "Print the first NUMBER lines of each file")
-	isOptBytesSet bool = false
+	optBytes      = flag.Int("c", DefaultCount, "Print the first NUMBER bytes of each file, suppress -n")
+	optLines      = flag.Int("n", DefaultCount, "Print the first NUMBER lines of each file")
+	isOptBytesSet = false
 )
 
 func headBytes(r io.Reader, n int) {
@@ -65,7 +65,7 @@ func head(r io.Reader, i int) {
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintf(flag.CommandLine.Output(), USAGE, DEFAUTL_COUNT)
+		fmt.Fprintf(flag.CommandLine.Output(), USAGE, DefaultCount)
 		flag.PrintDefaults()
 	}
 	flag.Parse()

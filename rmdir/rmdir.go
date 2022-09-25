@@ -37,7 +37,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) == 0 {
-		fmt.Println("Must have aleast one operant")
+		fmt.Println("Must have at least one parameter")
 		os.Exit(1)
 	}
 

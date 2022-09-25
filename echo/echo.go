@@ -24,7 +24,7 @@ If -e is in effect, the following escape is recognized:
 
 	\b backspace
 
-	\c procedure no futher input
+	\c procedure no further input
 
 	\e escape
 
@@ -77,15 +77,15 @@ func main() {
 	_ = flag.Bool("E", false, "Disable backslash escape (default)")
 	flag.Parse()
 
-	concated := strings.Join(flag.Args(), " ")
+	concatenated := strings.Join(flag.Args(), " ")
 
 	if *argEscape {
 		idx := 0
-		for idx < len(concated) {
-			c := concated[idx]
-			if c == '\\' && idx != len(concated)-1 {
+		for idx < len(concatenated) {
+			c := concatenated[idx]
+			if c == '\\' && idx != len(concatenated)-1 {
 				idx++
-				switch concated[idx] {
+				switch concatenated[idx] {
 				case '\\':
 					c = '\\'
 				case 'a':
@@ -109,37 +109,37 @@ func main() {
 				case 'x':
 					c = 0
 					// check for the first hex char
-					if idx < len(concated)-1 && isHexaByte(concated[idx+1]) {
+					if idx < len(concatenated)-1 && isHexaByte(concatenated[idx+1]) {
 						idx++
-						c = hexToBin(concated[idx])
+						c = hexToBin(concatenated[idx])
 					} else {
 						goto write
 					}
 					// check for the second hex char
-					if idx < len(concated)-1 && isHexaByte(concated[idx+1]) {
+					if idx < len(concatenated)-1 && isHexaByte(concatenated[idx+1]) {
 						idx++
-						c = 16*c + hexToBin(concated[idx])
+						c = 16*c + hexToBin(concatenated[idx])
 					}
 				case '0':
 					c = 0
 					// check for the first oct char
-					if idx < len(concated)-1 && isOctalByte(concated[idx+1]) {
+					if idx < len(concatenated)-1 && isOctalByte(concatenated[idx+1]) {
 						idx++
-						c = octToBin(concated[idx])
+						c = octToBin(concatenated[idx])
 					} else {
 						goto write
 					}
 					// check for the second oct char
-					if idx < len(concated)-1 && isOctalByte(concated[idx+1]) {
+					if idx < len(concatenated)-1 && isOctalByte(concatenated[idx+1]) {
 						idx++
-						c = 8*c + octToBin(concated[idx])
+						c = 8*c + octToBin(concatenated[idx])
 					} else {
 						goto write
 					}
 					// check for the third oct char
-					if idx < len(concated)-1 && isOctalByte(concated[idx+1]) {
+					if idx < len(concatenated)-1 && isOctalByte(concatenated[idx+1]) {
 						idx++
-						c = 8*c + octToBin(concated[idx])
+						c = 8*c + octToBin(concatenated[idx])
 					}
 				}
 			}
@@ -147,8 +147,8 @@ func main() {
 			os.Stdout.Write([]byte{c})
 			idx++
 		}
-	} else { // no escape, print args concatinated as they are
-		fmt.Print(concated)
+	} else { // no escape, print args concatenated as they are
+		fmt.Print(concatenated)
 	}
 
 	if !*argNoNewline {

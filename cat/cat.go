@@ -19,9 +19,9 @@ OPTION(S)
 )
 
 var (
-	argNonBlank = flag.Bool("b", false, "Number non-empty ouput line, suppress -n")
-	argNumber   = flag.Bool("n", false, "Number all ouput line")
-	argSqueeze  = flag.Bool("s", false, "Squeeze multiple adjcent empty line to a single one")
+	argNonBlank = flag.Bool("b", false, "Number non-empty output line, suppress -n")
+	argNumber   = flag.Bool("n", false, "Number all output line")
+	argSqueeze  = flag.Bool("s", false, "Squeeze multiple adjacent empty line to a single one")
 
 	simpleCat = io.Copy
 )

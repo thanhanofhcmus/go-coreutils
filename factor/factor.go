@@ -31,7 +31,7 @@ func getFactors(n int) []int {
 		n /= 2
 	}
 
-	for f := int(3); f <= n; f += 2 {
+	for f := 3; f <= n; f += 2 {
 		if n%f == 0 {
 			factors = append(factors, f)
 			n /= f
@@ -67,7 +67,7 @@ func main() {
 
 	args := flag.Args()
 	if len(args) == 0 {
-		fmt.Println("Must have aleast one operant")
+		fmt.Println("Must have at least one parameter")
 		os.Exit(1)
 	}
 

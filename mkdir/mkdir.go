@@ -26,7 +26,7 @@ func main() {
 
 	paths := flag.Args()
 	if len(paths) == 0 {
-		fmt.Println("Must have aleast one operant")
+		fmt.Println("Must have at least one parameter")
 		os.Exit(1)
 	}
 

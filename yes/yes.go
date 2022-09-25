@@ -7,7 +7,7 @@ import (
 
 const (
 	DEFAULT = "yes"
-	USAGE   = `yes - print a string until interupted
+	USAGE   = `yes - print a string until interrupted
 
 FORM(S)
 yes [REP]
